@@ -1,0 +1,17 @@
+name: Build Test CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build Full Example
+        run: g++ -static -O3 -ffast-math -funroll-loops -o full_example -Iinclude src/sconf_parser.cpp src/sconf_value.cpp examples/full_example.cpp
