@@ -72,6 +72,13 @@ private:
     static std::string trimQuotes(const std::string& str);
 
     /**
+     * @brief Formats the parameter to yyyy-mm-dd HH:MM:SS
+     * @param time The std::tm variable to be converted.
+     * @return String-formatted date to yyyy-mm-dd HH:MM:SS.
+     */
+    static std::string formatDateTime(const std::tm& time);
+
+    /**
      * @brief Checks if a value represents an array.
      * @param value The string value to check.
      * @return `true` if the value represents an array, `false` otherwise.
