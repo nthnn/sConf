@@ -19,6 +19,7 @@
 #include <regex>
 #include <sconf_exception.hpp>
 #include <sconf_value.hpp>
+#include <string>
 
 sConfValue::Type sConfValue::getType() const {
     return this->type;
