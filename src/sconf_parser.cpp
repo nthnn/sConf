@@ -40,6 +40,12 @@ std::string sConfParser::trimQuotes(const std::string& str) {
     return str;
 }
 
+std::string sConfParser::formatDateTime(const std::tm& time) {
+    std::ostringstream oss;
+    oss << std::put_time(&time, "%Y-%m-%d %H:%M:%S");
+    return oss.str();
+}
+
 bool sConfParser::isArray(const std::string& value) {
     return !value.empty() && value.front() == '[' && value.back() == ']';
 }
@@ -135,6 +141,10 @@ void sConfParser::saveValue(std::ofstream& file, const sConfValue& value) {
 
         case sConfValue::Type::Boolean:
             file << (value.getBoolean() ? "true" : "false");
+            break;
+
+        case sConfValue::Type::Date:
+            file << sConfParser::formatDateTime(value.getDate());
             break;
 
         default:
