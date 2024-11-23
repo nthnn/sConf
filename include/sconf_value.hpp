@@ -56,43 +56,64 @@ public:
     /**
      * @brief Default constructor. Initializes the value as an empty string.
      */
-    sConfValue() = default;
+    sConfValue() :
+        stringValue(""),
+        values({}),
+        type(Type::String) {}
 
     /**
      * @brief Constructs a sConfValue with a string value.
      * @param val The string value to set.
      */
-    explicit sConfValue(const std::string& val) : stringValue(val), type(Type::String) {}
+    explicit sConfValue(const std::string& val) :
+        stringValue(val),
+        values({}),
+        type(Type::String) {}
 
     /**
      * @brief Constructs a sConfValue with an integer value.
      * @param val The integer value to set.
      */
-    explicit sConfValue(int val) : stringValue(std::to_string(val)), type(Type::Integer) {}
+    explicit sConfValue(int val) :
+        stringValue(std::to_string(val)),
+        values({}),
+        type(Type::Integer) {}
 
     /**
      * @brief Constructs a sConfValue with a double value.
      * @param val The double value to set.
      */
-    explicit sConfValue(double val) : stringValue(std::to_string(val)), type(Type::Double) {}
+    explicit sConfValue(double val) :
+        stringValue(std::to_string(val)),
+        values({}),
+        type(Type::Double) {}
 
     /**
      * @brief Constructs a sConfValue with a boolean value.
      * @param val The boolean value to set. Stored as "true" or "false".
      */
-    explicit sConfValue(bool val) : stringValue(val ? "true" : "false"), type(Type::Boolean) {}
+    explicit sConfValue(bool val) :
+        stringValue(val ? "true" : "false"),
+        values({}),
+        type(Type::Boolean) {}
 
     /**
      * @brief Constructs a sConfValue with an array of sConfValue objects.
      * @param val The vector of sConfValue objects to set.
      */
-    explicit sConfValue(const std::vector<sConfValue>& val) : values(val), type(Type::Array) {}
+    explicit sConfValue(const std::vector<sConfValue>& val) :
+        stringValue(""),
+        values(val),
+        type(Type::Array) {}
 
     /**
      * @brief Constructs a sConfValue with a date value.
      * @param val The date and time value to set.
      */
-    explicit sConfValue(const std::tm& val) : type(Type::Date) {
+    explicit sConfValue(const std::tm& val) :
+        stringValue(""),
+        values({}),
+        type(Type::Date) {
         char buffer[32];
         std::strftime(
             buffer,

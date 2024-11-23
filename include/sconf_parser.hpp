@@ -102,6 +102,13 @@ private:
 
 public:
     /**
+     * @brief Default sConfParser class constructor.
+     */
+    sConfParser() :
+        data({}),
+        comments({}) {}
+
+    /**
      * @brief Loads a configuration file.
      * @param filename The path to the file to load.
      * @throws std::runtime_error If the file cannot be opened or parsed.
